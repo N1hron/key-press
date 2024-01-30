@@ -1,0 +1,38 @@
+.keyboard {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    
+    &__section {
+        display: flex;
+        gap: 0.4rem;
+        flex-direction: column;
+
+        &:nth-child(2) {
+            max-width: 11.9rem;
+        }
+    }
+
+    &__row {
+        display: flex;
+        gap: 0.4rem;
+        min-height: 3.7rem;
+    }
+
+    &__blank {
+        flex-grow: 1;
+    }
+}
+
+.function-keys {
+    display: flex;
+    gap: 1.75rem;
+    
+    .key__label {
+        font-size: 1.25rem;
+    }
+
+    &__group {
+        @extend .keyboard__row;
+    }
+}
