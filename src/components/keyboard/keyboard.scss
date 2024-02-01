@@ -1,7 +1,9 @@
 .keyboard {
     display: flex;
-    justify-content: center;
     gap: 1rem;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 0 0.5rem;
     
     &__section {
         display: flex;
@@ -34,5 +36,11 @@
 
     &__group {
         @extend .keyboard__row;
+    }
+}
+
+@media(max-width: 71.5rem) {
+    .keyboard {
+        padding: 0 1rem 0.5rem;
     }
 }

@@ -1,42 +1,53 @@
-import { useEffect, useState, createContext } from 'react'
+import { useEffect, useState } from 'react'
 
-import PressedKeysContext from '../../contexts/pressedKeysContext.js'
+import PressedKeysInfoContext from '../../contexts/PressedKeysInfoContext.js'
 import Keyboard from '../keyboard/Keyboard'
+import PressedKeysHistory from '../pressedKeysHistory/PressedKeysHistory.jsx'
 import LastKey from '../lastKey/LastKey'
 
 import 'normalize.css'
 import './app.scss'
 
 export default function App() {
-    const [pressedKeys, setPressedKeys] = useState([])
+    const [pressedKeysInfo, setPressedKeysInfo] = useState({
+        current: [],
+        last: null
+    })
 
     useEffect(() => {
         window.addEventListener('contextmenu', event => event.preventDefault())
         window.addEventListener('keydown', onKeyDown)
         window.addEventListener('keyup', onKeyUp)
-        window.addEventListener('blur', () => setPressedKeys([]))
-
-        console.log(navigator)
+        window.addEventListener('blur', () => setPressedKeysInfo(prev => ({ ...prev, current: [] })))
     }, [])
 
     function onKeyDown(event) {
         event.preventDefault()
-        console.log(event.key)
-        setPressedKeys(prev => prev.includes(event.code) ? prev : [...prev, { code: event.code, name: event.key }])
+        if (!event.repeat) {
+            setPressedKeysInfo(prev => ({
+                current: prev.current.includes(event.code) ? prev.current : [...prev.current, { code: event.code, name: event.key }],
+                last: { code: event.code, name: event.key }
+            }))
+        }
     }
 
     function onKeyUp(event) {
         event.preventDefault()
-        setPressedKeys(prev => prev.filter(key => key.code !== event.code))
+        setPressedKeysInfo(prev => ({
+            ...prev,
+            current: prev.current.filter(key => key.code !== event.code)
+        }))
     }
-
+    
     return (
-        navigator.keyboard ||
-        <div className='container'>
-            <PressedKeysContext.Provider value={ pressedKeys }>
+        <PressedKeysInfoContext.Provider value={ pressedKeysInfo }>
+            <PressedKeysHistory/>
+            <div className='main-content'>
                 <LastKey/>
-                <Keyboard/>
-            </PressedKeysContext.Provider>
-        </div>
+                <div className='keyboard-container'>
+                    <Keyboard/>
+                </div>
+            </div>
+        </PressedKeysInfoContext.Provider>
     )
 }

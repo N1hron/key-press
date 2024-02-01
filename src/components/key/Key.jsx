@@ -1,7 +1,8 @@
 import { useMemo, useContext } from 'react'
 
-import PressedKeysContext from '../../contexts/pressedKeysContext'
+import PressedKeysContext from '../../contexts/PressedKeysInfoContext'
 
+import winIcon from '../../assets/images/windows-icon.svg'
 import './key.scss'
 
 export default function Key({ main, secondary, centered, wide, code }) {
@@ -19,13 +20,13 @@ export default function Key({ main, secondary, centered, wide, code }) {
     }, [pressedKeys])
 
     function keyPressed() {
-        return pressedKeys.find(key => key.code === code)
+        return pressedKeys.current.find(key => key.code === code)
     }
 
     return (
         <div className={ className }>
             <p className='key__label key__label_main'>
-                { main }
+                { main === 'Meta' ? <img src={ winIcon } alt='Windows' /> : main}
             </p>
             {
                 secondary &&

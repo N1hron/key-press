@@ -1,28 +1,24 @@
-import { useContext, useState, useEffect, useRef } from 'react'
+import { useContext } from 'react'
 import { motion } from 'framer-motion'
 
-import PressedKeysContext from '../../contexts/pressedKeysContext'
+import PressedKeysInfoContext from '../../contexts/PressedKeysInfoContext'
 
 import './lastKey.scss'
 
 export default function LastKey() {
-    let [lastPressedKey, setLastPressedKey] = useState({code: null, name: 'Press Key'})
+    const pressedKeysInfo = useContext(PressedKeysInfoContext)
 
-    const pressedKeys = useContext(PressedKeysContext)
-    const lastKeyRef = useRef(null)
+    if (!pressedKeysInfo.last) return <div className='last-key'><p>Press key</p></div>
 
-    useEffect(() => {
-        if (pressedKeys.at(-1)) setLastPressedKey(pressedKeys.at(-1))
-    }, [pressedKeys])
-
+    const { name, code } = pressedKeysInfo.last
     return (
         <motion.div 
             className='last-key'
-            initial={{ opacity: 0, transform: 'translateX(25%)' }}
+            initial={{ opacity: 0, transform: 'translateY(25%)' }}
             animate={{ opacity: 1, transform: 'translateY(0)' }}
-            key={ lastPressedKey.code }
+            key={ code }
         >
-            <p>{ lastPressedKey.name === ' ' ? 'Space' : lastPressedKey.name }</p>
+            <p>{ name === ' ' ? 'Space' : name }</p>
         </motion.div>
     )
 }
