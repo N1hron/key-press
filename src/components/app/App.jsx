@@ -5,7 +5,7 @@ import Keyboard from '../keyboard/Keyboard'
 import LastKey from '../lastKey/LastKey'
 
 import 'normalize.css'
-import './App.scss'
+import './app.scss'
 
 export default function App() {
     const [pressedKeys, setPressedKeys] = useState([])
