@@ -33,9 +33,12 @@ export default function App() {
 
     function onKeyUp(event) {
         event.preventDefault()
+
+        const { key, code } = event
+        console.log(event.key, event.code)
         setPressedKeysInfo(prev => ({
-            ...prev,
-            current: prev.current.filter(key => key.code !== event.code)
+            last: key === 'PrintScreen' ? { code, name: key } : prev.last,
+            current: prev.current.filter(key => key.code !== code)
         }))
     }
     
