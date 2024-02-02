@@ -103,7 +103,7 @@ export default function Keyboard() {
             </div>
             <div className='keyboard__section'>
                 <div className='keyboard__row'>
-                    <Key code='' main='Print Screen'/> {/* Figure This Out!!! */}
+                    <Key code='PrintScreen' main='Print Screen'/> {/* Figure This Out!!! */}
                     <Key centered code='ScrollLock' main='Scroll Lock'/>
                     <Key code='Pause' main='Pause Break'/>
                 </div>

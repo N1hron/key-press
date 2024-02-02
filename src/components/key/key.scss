@@ -27,6 +27,20 @@
         background-color: #6c6c6c;
     }
 
+    &_was-pressed {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 0.5rem;
+            height: 0.5rem;
+            background:linear-gradient(-135deg, rgb(127, 255, 150) 50%, rgba(127, 255, 150, 0) 50%)
+        }
+    }
+
     &__label {
         font-size: 1.25rem;
 

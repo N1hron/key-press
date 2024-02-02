@@ -1,4 +1,4 @@
-import { useMemo, useContext } from 'react'
+import { useMemo, useContext, useState } from 'react'
 
 import PressedKeysContext from '../../contexts/PressedKeysInfoContext'
 
@@ -8,6 +8,8 @@ import './key.scss'
 export default function Key({ main, secondary, centered, wide, code }) {
     const pressedKeys = useContext(PressedKeysContext)
 
+    const [wasPressed, setWasPressed] = useState(false)
+
     const className = useMemo(() => {
         let className = 'key'
 
@@ -15,9 +17,13 @@ export default function Key({ main, secondary, centered, wide, code }) {
         if (wide) className += ' key_wide'
         if (main.length > 2) className += ' key_small-text'
         if (keyPressed()) className += ' key_pressed'
+        if (wasPressed) className +=' key_was-pressed'
+
+        if (pressedKeys?.last?.code === code && !wasPressed) setWasPressed(true)
+        
 
         return className
-    }, [pressedKeys])
+    }, [pressedKeys, wasPressed])
 
     function keyPressed() {
         return pressedKeys.current.find(key => key.code === code)
