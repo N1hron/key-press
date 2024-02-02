@@ -15,10 +15,6 @@
             @extend .key;
             font-size: 1.25rem;
             flex-shrink: 0;
-
-            &.first {
-                color: black;
-            }
         }
     }
 }

@@ -33,8 +33,10 @@ export default function PressedKeysHistory() {
         return pressedKeysHistory.map((key, i) => {
             return (
                 <li 
-                    className={ i === 0 ? 'first' : '' }
-                    style={ i === 0 ? { backgroundColor: getRandomColor() } : null }
+                    style={ i === 0 ? { 
+                        backgroundColor: getRandomHsl(), 
+                        color: '#000000' 
+                    } : null }
                     key={ i }
                 >
                     { key.name === ' ' ? 'Space' : key.name }
@@ -52,9 +54,9 @@ export default function PressedKeysHistory() {
     )
 }
 
-function getRandomColor() {
-    const rnd = Math.floor(Math.random() * 360) // 0 - 359
+function getRandomHsl() {
+    const hue = Math.floor(Math.random() * 360) // 0 - 359
     
-    return `hsl(${rnd}, 100%, 75%)`
+    return `hsl(${hue}, 100%, 75%)`
 }
 
