@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { motion } from 'framer-motion'
 
 import PressedKeysContext from '../../contexts/PressedKeysContext'
+import capitalize from '../../utils/capitalize'
 
 import './lastKey.scss'
 
@@ -18,7 +19,7 @@ export default function LastKey() {
             animate={{ opacity: 1, transform: 'translateY(0)' }}
             key={ code }
         >
-            <p>{ name === ' ' ? 'Space' : name }</p>
+            <p>{ name === ' ' ? 'Space' : capitalize(name) }</p>
         </motion.div>
     )
 }

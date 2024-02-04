@@ -10,7 +10,10 @@
     gap: 0.3rem;
 
     &_centered {
-        justify-content: center;
+        .key__label {
+            display: flex;
+            justify-content: center;
+        }
     }
 
     &_wide {
@@ -43,8 +46,12 @@
 
     &__label {
         font-size: 1.25rem;
+        width: 100%;
 
         img {
+            display: block;
+            height: 100%;
+            width: auto;
             max-height: 1.25rem;
         }
     

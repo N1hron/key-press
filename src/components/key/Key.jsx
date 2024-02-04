@@ -1,6 +1,7 @@
 import { useMemo, useContext, useState } from 'react'
 
 import PressedKeysContext from '../../contexts/PressedKeysContext'
+import getImgForKey from '../../utils/getImgForKey'
 
 import winIcon from '../../assets/images/windows-icon.svg'
 import './key.scss'
@@ -32,7 +33,7 @@ export default function Key({ main, secondary, centered, wide, code }) {
     return (
         <div className={ className }>
             <p className='key__label key__label_main'>
-                { main === 'Meta' ? <img src={ winIcon } alt='Windows' /> : main}
+                { getImgForKey(main) }
             </p>
             {
                 secondary &&

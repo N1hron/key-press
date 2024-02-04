@@ -98,12 +98,13 @@ export default function Keyboard() {
                     <Key code='AltLeft' main='Alt'/>
                     <Key wide centered code='Space' main='Space'/>
                     <Key code='AltRight' main='Alt'/>
+                    <Key centered code='ContextMenu' main='Context Menu'/>
                     <Key code='ControlRight' main='Ctrl'/>
                 </div>
             </div>
             <div className='keyboard__section'>
                 <div className='keyboard__row'>
-                    <Key code='PrintScreen' main='Print Screen'/> {/* Figure This Out!!! */}
+                    <Key code='PrintScreen' main='Print Screen'/>
                     <Key centered code='ScrollLock' main='Scroll Lock'/>
                     <Key code='Pause' main='Pause Break'/>
                 </div>

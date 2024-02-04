@@ -23,7 +23,7 @@ export default function App() {
 
     function onKeyDown(event) {
         event.preventDefault()
-
+        
         if (!event.repeat) {
             setPressedKeysInfo(prev => ({
                 current: prev.current.includes(event.code) ? prev.current : [...prev.current, { code: event.code, name: event.key }],
@@ -38,8 +38,10 @@ export default function App() {
         const { key, code } = event
 
         setPressedKeysInfo(prev => ({
-            last: key === 'PrintScreen' ? { code, name: key } : prev.last,
-            current: prev.current.filter(key => key.code !== code)
+            current: prev.current.filter(key => key.code !== code),
+            last: (
+                (key === 'PrintScreen' || key === 'ContextMenu') ? { code, name: key } : prev.last
+            )
         }))
     }
     

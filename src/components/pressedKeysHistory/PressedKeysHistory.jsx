@@ -1,6 +1,9 @@
 import { useContext, useState, useEffect, useRef, useMemo } from 'react'
 
 import PressedKeysContext from '../../contexts/PressedKeysContext'
+import capitalize from '../../utils/capitalize'
+import getRandomHsl from '../../utils/getRandomHsl'
+import getImgForKey from '../../utils/getImgForKey'
 
 import './pressedKeysHistory.scss'
 
@@ -32,14 +35,12 @@ export default function PressedKeysHistory() {
     const pressedKeysHistoryElements = useMemo(() => {
         return pressedKeysHistory.map((key, i) => {
             return (
-                <li 
-                    style={ i === 0 ? { 
-                        backgroundColor: getRandomHsl(), 
-                        color: '#000000' 
-                    } : null }
+                <li
+                    className={ i === 0 ? 'first' : ''}
+                    style={ i === 0 ? { backgroundColor: getRandomHsl() } : null }
                     key={ i }
                 >
-                    { key.name === ' ' ? 'Space' : key.name }
+                    { key.name === ' ' ? 'Space' : getImgForKey(capitalize(key.name)) }
                 </li>
             )
         })
@@ -52,11 +53,5 @@ export default function PressedKeysHistory() {
             </ul>
         </div>
     )
-}
-
-function getRandomHsl() {
-    const hue = Math.floor(Math.random() * 360) // 0 - 359
-    
-    return `hsl(${hue}, 100%, 75%)`
 }
 

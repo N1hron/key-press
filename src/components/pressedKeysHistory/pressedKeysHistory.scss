@@ -15,6 +15,20 @@
             @extend .key;
             font-size: 1.25rem;
             flex-shrink: 0;
+
+            img {
+                max-height: 1.25rem;
+                margin: 0 auto;
+            }
+
+            &.first {
+                color: #000000;
+
+                img {
+                    -webkit-filter: invert(100%); /* Safari/Chrome */
+                    filter: invert(100%);
+                }
+            }
         }
     }
 }
