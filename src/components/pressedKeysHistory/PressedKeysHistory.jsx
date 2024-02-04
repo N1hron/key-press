@@ -1,11 +1,11 @@
 import { useContext, useState, useEffect, useRef, useMemo } from 'react'
 
-import PressedKeysInfoContext from '../../contexts/PressedKeysInfoContext'
+import PressedKeysContext from '../../contexts/PressedKeysContext'
 
 import './pressedKeysHistory.scss'
 
 export default function PressedKeysHistory() {
-    const pressedKeysInfo = useContext(PressedKeysInfoContext)
+    const pressedKeysInfo = useContext(PressedKeysContext)
     const pressedKeysListRef = useRef(null)
 
     const [pressedKeysHistory, setPressedKeysHistory] = useState([])

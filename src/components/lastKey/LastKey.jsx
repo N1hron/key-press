@@ -1,12 +1,12 @@
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
 
-import PressedKeysInfoContext from '../../contexts/PressedKeysInfoContext'
+import PressedKeysContext from '../../contexts/PressedKeysContext'
 
 import './lastKey.scss'
 
 export default function LastKey() {
-    const pressedKeysInfo = useContext(PressedKeysInfoContext)
+    const pressedKeysInfo = useContext(PressedKeysContext)
 
     if (!pressedKeysInfo.last) return <div className='last-key'><p>Press key</p></div>
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import PressedKeysInfoContext from '../../contexts/PressedKeysInfoContext.js'
+import PressedKeysContext from '../../contexts/PressedKeysContext.js'
 import Keyboard from '../keyboard/Keyboard'
 import PressedKeysHistory from '../pressedKeysHistory/PressedKeysHistory.jsx'
 import LastKey from '../lastKey/LastKey'
@@ -44,7 +44,7 @@ export default function App() {
     }
     
     return (
-        <PressedKeysInfoContext.Provider value={ pressedKeysInfo }>
+        <PressedKeysContext.Provider value={ pressedKeysInfo }>
             <PressedKeysHistory/>
             <div className='main-content'>
                 <LastKey/>
@@ -52,6 +52,6 @@ export default function App() {
                     <Keyboard/>
                 </div>
             </div>
-        </PressedKeysInfoContext.Provider>
+        </PressedKeysContext.Provider>
     )
 }

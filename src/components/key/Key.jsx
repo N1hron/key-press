@@ -1,6 +1,6 @@
 import { useMemo, useContext, useState } from 'react'
 
-import PressedKeysContext from '../../contexts/PressedKeysInfoContext'
+import PressedKeysContext from '../../contexts/PressedKeysContext'
 
 import winIcon from '../../assets/images/windows-icon.svg'
 import './key.scss'
