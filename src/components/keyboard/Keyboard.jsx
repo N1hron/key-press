@@ -130,6 +130,28 @@ export default function Keyboard() {
                     <Key code='ArrowRight' main='&rarr;'/>
                 </div>
             </div>
+            <div className='keyboard__section'>
+                <div className='keyboard__row'></div>
+                <div className='keyboard__numpad'>
+                    <Key code='NumLock' main='Num Lock'/>
+                    <Key code='NumpadDivide' main='/'/>
+                    <Key code='NumpadMultiply' main='*'/>
+                    <Key code='NumpadSubtract' main='-'/>
+                    <Key code='Numpad7' main='7' secondary='Home'/>
+                    <Key code='Numpad8' main='8' secondary='&uarr;'/>
+                    <Key code='Numpad9' main='9' secondary='PgUp'/>
+                    <Key code='NumpadAdd' main='+'/>
+                    <Key code='Numpad4' main='4' secondary='&larr;'/>
+                    <Key code='Numpad5' main='5'/>
+                    <Key code='Numpad6' main='6' secondary='&rarr;'/>
+                    <Key code='Numpad1' main='1' secondary='End'/>
+                    <Key code='Numpad2' main='2' secondary='&darr;'/>
+                    <Key code='Numpad3' main='3' secondary='PgDn'/>
+                    <Key code='NumpadEnter' main='Enter'/>
+                    <Key code='Numpad0' main='0' secondary='Ins'/>
+                    <Key code='NumpadDecimal' main='.' secondary='Del'/>
+                </div>
+            </div>
         </div>
     )
 }

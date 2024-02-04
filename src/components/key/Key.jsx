@@ -16,7 +16,6 @@ export default function Key({ main, secondary, centered, wide, code }) {
 
         if (centered) className += ' key_centered'
         if (wide) className += ' key_wide'
-        if (main.length > 2) className += ' key_small-text'
         if (keyPressed()) className += ' key_pressed'
         if (wasPressed) className +=' key_was-pressed'
 
@@ -32,12 +31,12 @@ export default function Key({ main, secondary, centered, wide, code }) {
 
     return (
         <div className={ className }>
-            <p className='key__label key__label_main'>
+            <p className={ 'key__label key__label_main' + (main.length > 2 ? ' key__label_small-text' : '')}>
                 { getImgForKey(main) }
             </p>
             {
                 secondary &&
-                <p className='key__label key__label_secondary'>
+                <p className={ 'key__label key__label_secondary' + (secondary.length > 2 ? ' key__label_small-text' : '')}>
                     { secondary }
                 </p>
             }

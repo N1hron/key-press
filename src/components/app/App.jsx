@@ -23,7 +23,7 @@ export default function App() {
 
     function onKeyDown(event) {
         event.preventDefault()
-        
+        console.log(event.key, event.code)
         if (!event.repeat) {
             setPressedKeysInfo(prev => ({
                 current: prev.current.includes(event.code) ? prev.current : [...prev.current, { code: event.code, name: event.key }],
