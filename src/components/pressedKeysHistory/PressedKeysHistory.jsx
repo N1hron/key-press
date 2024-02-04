@@ -1,7 +1,6 @@
 import { useContext, useState, useEffect, useRef, useMemo } from 'react'
 
 import PressedKeysContext from '../../contexts/PressedKeysContext'
-import capitalize from '../../utils/capitalize'
 import getRandomHsl from '../../utils/getRandomHsl'
 import getImgForKey from '../../utils/getImgForKey'
 
@@ -40,7 +39,7 @@ export default function PressedKeysHistory() {
                     style={ i === 0 ? { backgroundColor: getRandomHsl() } : null }
                     key={ i }
                 >
-                    { key.name === ' ' ? 'Space' : getImgForKey(capitalize(key.name)) }
+                    { key.name === ' ' ? 'Space' : getImgForKey(key.name) }
                 </li>
             )
         })

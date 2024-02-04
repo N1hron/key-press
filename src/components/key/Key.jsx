@@ -3,7 +3,6 @@ import { useMemo, useContext, useState } from 'react'
 import PressedKeysContext from '../../contexts/PressedKeysContext'
 import getImgForKey from '../../utils/getImgForKey'
 
-import winIcon from '../../assets/images/windows-icon.svg'
 import './key.scss'
 
 export default function Key({ main, secondary, centered, wide, code }) {
