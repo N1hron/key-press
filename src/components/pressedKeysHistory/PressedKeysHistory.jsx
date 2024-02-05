@@ -47,13 +47,13 @@ export default function PressedKeysHistory() {
                     { key.name === ' ' ? 'Space' : getImgForKey(key.name) }
                 </motion.li>
             )
-        })
+        }).reverse()
     }, [pressedKeysHistory])
     
     return (
         <div className='pressed-keys'>
             <ul ref={ pressedKeysListRef }>
-                { pressedKeysHistoryElements.reverse() }
+                { pressedKeysHistoryElements }
             </ul>
         </div>
     )
