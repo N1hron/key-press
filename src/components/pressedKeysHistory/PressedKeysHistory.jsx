@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect, useRef, useMemo } from 'react'
+import { motion } from 'framer-motion'
 
 import PressedKeysContext from '../../contexts/PressedKeysContext'
-import getRandomHsl from '../../utils/getRandomHsl'
 import getImgForKey from '../../utils/getImgForKey'
 
 import './pressedKeysHistory.scss'
@@ -14,7 +14,7 @@ export default function PressedKeysHistory() {
     
     useEffect(() => {
         if (pressedKeysInfo.last) {
-            setPressedKeysHistory(prev => [pressedKeysInfo.last, ...prev])
+            setPressedKeysHistory(prev => [...prev, pressedKeysInfo.last, ])
         }
     }, [pressedKeysInfo.last])
 
@@ -24,7 +24,7 @@ export default function PressedKeysHistory() {
         if (ul.scrollWidth > ul.offsetWidth) {
             setPressedKeysHistory(prev => {
                 const prevCopy = [...prev]
-                prevCopy.pop()
+                prevCopy.shift()
                 
                 return prevCopy
             })
@@ -33,14 +33,19 @@ export default function PressedKeysHistory() {
 
     const pressedKeysHistoryElements = useMemo(() => {
         return pressedKeysHistory.map((key, i) => {
+            const isLast = i === pressedKeysHistory.length - 1
+
             return (
-                <li
-                    className={ i === 0 ? 'first' : ''}
-                    style={ i === 0 ? { backgroundColor: getRandomHsl() } : null }
-                    key={ i }
+                <motion.li
+                    initial={{ opacity: 0, transform: 'scale(.8)' }}
+                    animate={{ opacity: 1, transform: 'scale(1)' }}
+                    transition={{ duration: 0.2 }}
+                    className={ isLast ? 'last' : ''}
+                    style={ isLast ? { backgroundColor: key.hsl } : null }
+                    key={ key.uuid }
                 >
                     { key.name === ' ' ? 'Space' : getImgForKey(key.name) }
-                </li>
+                </motion.li>
             )
         })
     }, [pressedKeysHistory])
@@ -48,7 +53,7 @@ export default function PressedKeysHistory() {
     return (
         <div className='pressed-keys'>
             <ul ref={ pressedKeysListRef }>
-                { pressedKeysHistoryElements }
+                { pressedKeysHistoryElements.reverse() }
             </ul>
         </div>
     )

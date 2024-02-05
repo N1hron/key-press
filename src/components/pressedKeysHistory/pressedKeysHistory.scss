@@ -2,7 +2,7 @@
 
 .pressed-keys {
     padding: 0.4rem;
-    min-height: 4.5rem;
+    min-height: 3.2375rem;
 
     ul {
         list-style: none;
@@ -21,7 +21,7 @@
                 margin: 0 auto;
             }
 
-            &.first {
+            &.last {
                 color: #000000;
 
                 img {

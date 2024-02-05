@@ -10,13 +10,13 @@ export default function LastKey() {
 
     if (!pressedKeysInfo.last) return <div className='last-key'><p>Press key</p></div>
 
-    const { name, code } = pressedKeysInfo.last
+    const { name, uuid } = pressedKeysInfo.last
     return (
         <motion.div 
             className='last-key'
             initial={{ opacity: 0, transform: 'translateY(25%)' }}
             animate={{ opacity: 1, transform: 'translateY(0)' }}
-            key={ code }
+            key={ uuid }
         >
             <p>{ name === ' ' ? 'Space' : name }</p>
         </motion.div>
